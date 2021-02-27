@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>VuePress的搭建过程 | 网易微专业 肖丽珠的博客</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="肖丽珠的博客">
+    
+    <link rel="preload" href="/wzyblog/assets/css/0.styles.1040b639.css" as="style"><link rel="preload" href="/wzyblog/assets/js/app.0250bfe8.js" as="script"><link rel="preload" href="/wzyblog/assets/js/2.c68f3ee4.js" as="script"><link rel="preload" href="/wzyblog/assets/js/10.ce54d032.js" as="script"><link rel="prefetch" href="/wzyblog/assets/js/3.9fb0aadf.js"><link rel="prefetch" href="/wzyblog/assets/js/4.defd788a.js"><link rel="prefetch" href="/wzyblog/assets/js/5.487a35bc.js"><link rel="prefetch" href="/wzyblog/assets/js/6.66e0d427.js"><link rel="prefetch" href="/wzyblog/assets/js/7.a2800d9c.js"><link rel="prefetch" href="/wzyblog/assets/js/8.ebaa54d7.js"><link rel="prefetch" href="/wzyblog/assets/js/9.995c1ef9.js">
+    <link rel="stylesheet" href="/wzyblog/assets/css/0.styles.1040b639.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/wzyblog/" aria-current="page" class="home-link router-link-exact-active router-link-active"><!----> <span class="site-name">网易微专业 肖丽珠的博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <!----> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="vuepress的搭建过程"><a href="#vuepress的搭建过程" class="header-anchor">#</a> VuePress的搭建过程</h1> <p>首先创建一个github账号，在账户里新建一个项目，使用git将项目clone到本地，使用ssh秘钥的方式clone。
+在clone下来的文件里安装vuepress.
+项目搭建：
+1、vuepress是有vue、vueRouter和webpack驱动的单页面应用，所以要提前安装node和webpack。node版本&gt;=8.
+2、安装vuepress:.</p> <div class="language-markdown extra-class"><pre class="language-markdown"><code><span class="token front-matter-block"><span class="token punctuation">---</span>
+<span class="token font-matter yaml language-yaml">yarn global add vuepress 或者 npm install -g vuepress</span> 
+<span class="token punctuation">---</span></span>
+</code></pre></div><div class="language- extra-class"><pre><code> 3、正在当前文件里打开命行窗口(运行cmd) 执行
+</code></pre></div><div class="language-markdown extra-class"><pre class="language-markdown"><code><span class="token front-matter-block"><span class="token punctuation">---</span>
+<span class="token font-matter yaml language-yaml">yarn init -y 或者 npm init -y</span>
+<span class="token punctuation">---</span></span>
+</code></pre></div><div class="language- extra-class"><pre><code>  4、此时在当前文件夹下会生成一个package.json文件，内容如下：
+</code></pre></div><div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>{
+&quot;name&quot;: &quot;vuepressdemo&quot;,
+&quot;version&quot;: &quot;1.0.0&quot;,
+&quot;description&quot;: &quot;&quot;,
+&quot;main&quot;: &quot;index.js&quot;,
+&quot;scripts&quot;: {
+&quot;test&quot;: &quot;echo &quot;Error: no test specified&quot; &amp;&amp; exit 1&quot;
+},
+&quot;keywords&quot;: [],
+&quot;author&quot;: &quot;&quot;,
+&quot;license&quot;: &quot;ISC&quot;
+}</p></div> <div class="language- extra-class"><pre><code>  修改scripts:
+</code></pre></div><div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>&quot;scripts&quot;: {
+&quot;docs:dev&quot;: &quot;vuepress dev docs&quot;,
+&quot;docs:build&quot;: &quot;vuepress build docs&quot;
+}</p></div> <div class="language- extra-class"><pre><code>   5、在当前文件夹新建docs文件夹，进入docs文件执行
+</code></pre></div><div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>echo '# Hello VuePress!' &gt; README.md</p></div> <p>这个文件相当首页文件。</p> <div class="language- extra-class"><pre><code>    6、在 docs 文件下创建 .vuepress 文件夹，所有vuepress相关的文件都将放在这里。
+</code></pre></div><div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>mkdir .vuepress</p></div> <div class="language- extra-class"><pre><code>    7、在.vuepress文件夹里创建config.js。
+	config.js文件是vuepress必要的配置文件，他导出一个javascript对象。
+</code></pre></div><div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>module.exports = {
+title: 'Hello VuePress',
+description: 'Just playing around'
+}</p></div> <div class="language- extra-class"><pre><code>    8、启动你的vuepress试一下。
+	在命令行里执行：
+</code></pre></div><div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>npm run docs:dev</p></div> <h2 id="predefined-variables-powered-by-default-theme"><a href="#predefined-variables-powered-by-default-theme" class="header-anchor">#</a> Predefined Variables Powered By Default Theme</h2> <h3 id="navbar"><a href="#navbar" class="header-anchor">#</a> navbar</h3> <ul><li>Type: <code>boolean</code></li> <li>Default: <code>undefined</code></li></ul> <p>See: <a href="/wzyblog/theme/default-theme-config.html#disable-the-navbar">Default Theme Config &gt; Disable the Navbar</a>.</p> <h3 id="sidebar"><a href="#sidebar" class="header-anchor">#</a> sidebar</h3> <ul><li>Type: <code>boolean|'auto'</code></li> <li>Default: <code>undefined</code></li></ul> <p>See: <a href="/wzyblog/theme/default-theme-config.html#sidebar">Default Theme Config &gt; Sidebar</a>.</p></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/wzyblog/assets/js/app.0250bfe8.js" defer></script><script src="/wzyblog/assets/js/2.c68f3ee4.js" defer></script><script src="/wzyblog/assets/js/10.ce54d032.js" defer></script>
+  </body>
+</html>
